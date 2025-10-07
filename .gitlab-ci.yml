@@ -1,0 +1,44 @@
+# © 2024 Amazon Web Services, Inc. or its affiliates. All Rights Reserved.
+# This AWS Content is provided subject to the terms of the AWS Customer Agreement available at
+# http://aws.amazon.com/agreement or other written agreement between Customer and either
+# Amazon Web Services, Inc. or Amazon Web Services EMEA SARL or both.
+
+stages:
+  - test
+  - deploy
+
+variables:
+  AWS_CREDS_TARGET_ROLE: arn:aws:iam::339712990371:role/GitLab
+  AWS_DEFAULT_REGION: us-east-1
+
+sast:
+  stage: test
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
+run-aws-probe:
+  image: registry.gitlab.aws.dev/tsd/probe/standalone-scanner:latest
+  stage: test
+  tags:
+    - arch:amd64
+    - size:large
+  script:
+    - /usr/bin/python3 /exec/app.py
+  artifacts:
+    paths:
+      - ${CI_PROJECT_DIR}/probe-out/*
+
+Push to CodeCommit:
+  stage: deploy
+  tags:
+    - arch:amd64
+    - size:large
+  script:
+    - ls -l
+    - apk add --no-cache git python3 py3-pip aws-cli
+    - pip3 install git-remote-codecommit --break-system-packages
+    - git remote set-url --push origin codecommit::us-east-1://aft-account-request
+    - git checkout $CI_DEFAULT_BRANCH
+    - git push
+  rules:
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
