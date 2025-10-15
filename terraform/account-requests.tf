@@ -5,9 +5,9 @@ module "account_request_01" {
     AccountEmail              = "ASHUTUP+Worldline-Network@amazon.com" #"{{ACCOUNT EMAIL}}"
     AccountName               = "Network" #"{{ACCOUNT NAME}}"
     ManagedOrganizationalUnit = "ou-1z8h-vecdg9tq" #"{{OU NAME}}" 
-    SSOUserEmail              = "ashutup@amazon.com" #"{{ACCOUNT SSO EMAIL}}"
-    SSOUserFirstName          = "Ashutsh" #"{{ACCOUNT SSO FIRST NAME}}"
-    SSOUserLastName           = "Upadhyay" #"{{ACCOUNT SSO LAST NAME}}"
+    SSOUserEmail              = "ASHUTUP+Worldline-Network@amazon.com" #"{{ACCOUNT SSO EMAIL}}"
+    SSOUserFirstName          = "Network" #"{{ACCOUNT SSO FIRST NAME}}"
+    SSOUserLastName           = "Account" #"{{ACCOUNT SSO LAST NAME}}"
   }
 
   account_tags = {
@@ -31,5 +31,5 @@ module "account_request_01" {
     custom2 = "b"
   }
 
-  account_customizations_name = "PRODUCTION" # This folder should exist in the repo "aft-account-customizations"
+  account_customizations_name = "PRODUCTION" # This folder should exist in the repo "aft-account-customizations".
 }
