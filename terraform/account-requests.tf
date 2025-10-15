@@ -31,5 +31,5 @@ module "account_request_01" {
     custom2 = "b"
   }
 
-  account_customizations_name = "NETWORK"
+  account_customizations_name = "PRODUCTION" # This folder should exist in the repo "aft-account-customizations"
 }
