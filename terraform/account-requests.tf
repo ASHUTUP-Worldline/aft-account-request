@@ -40,7 +40,7 @@ module "account_request_02" {
   control_tower_parameters = {
     AccountEmail              = "ASHUTUP+Worldline-Application1@amazon.com" #"{{ACCOUNT EMAIL}}"
     AccountName               = "Application1" #"{{ACCOUNT NAME}}"
-    ManagedOrganizationalUnit = "ou-1z8h-93r6teqm" #"{{OU NAME}}" 
+    ManagedOrganizationalUnit = "r-1z8h" #"{{OU NAME}}" 
     SSOUserEmail              = "ASHUTUP+Worldline-Application1@amazon.com" #"{{ACCOUNT SSO EMAIL}}"
     SSOUserFirstName          = "Application1" #"{{ACCOUNT SSO FIRST NAME}}"
     SSOUserLastName           = "Account" #"{{ACCOUNT SSO LAST NAME}}"
